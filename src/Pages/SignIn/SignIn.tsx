@@ -1,6 +1,6 @@
 import React, { useState, FormEvent, ChangeEvent } from 'react';
 import { FiMail, FiLock } from 'react-icons/fi';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { Input } from '../../components/Input/Input';
 import { Button } from '../../components/Button/Button';
@@ -10,6 +10,7 @@ import { Container, Form, Background } from './SignIn.styles';
 export function SignIn() {
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
+    const navigate = useNavigate();
 
     const handleSubmit = async (event: FormEvent) => {
         event.preventDefault();
@@ -29,10 +30,10 @@ export function SignIn() {
 
         if (response.ok) {
             console.log('Login bem-sucedido', data);
-            // Adicione aqui a lógica para redirecionar o usuário ou armazenar o token, etc.
+            navigate("/feed");
         } else {
             console.error('Erro no login', data);
-            // Adicione aqui a lógica para lidar com erros, como mostrar uma mensagem ao usuário
+            alert('Usuário ou senha incorretos!');
         }
     };
 
