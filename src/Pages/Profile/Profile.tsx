@@ -3,20 +3,20 @@ import { Post, PostType } from '../../components/Post/Post';
 import { Header } from '../../components/Header/Header';
 import { Sidebar }from '../../components/Sidebar/Sidebar';
 import { Search } from '../../components/Search/Search';
-import { FeedContainer } from './Feed.styles.ts';
+import { ProfileContainer } from './Profile.styles.ts';
 import { CreatePost } from '../../components/CreatePost/CreatePost.tsx';
 import axios from 'axios';
 import '../../styles/global.css';
 
-export function Feed() {
+export function Profile() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [posts, setPosts] = useState<PostType[]>([]);
 
   useEffect(() => {
-    // Buscar os posts pro feed no back
-    async function fetchPosts() {
+    // Adiciona os posts do usuario no perfil dele
+    async function fetchProfilePosts() {
       try {
-        const response = await axios.get('/api/feed-posts');
+        const response = await axios.get('/api/profile-posts');
         if (Array.isArray(response.data)) {
           setPosts(response.data);
         } else {
@@ -27,7 +27,7 @@ export function Feed() {
       }
     }
 
-    fetchPosts();
+    fetchProfilePosts();
   }, []);
 
   const handleOpenModal = () => {
@@ -39,6 +39,7 @@ export function Feed() {
   };
 
   const handleCreatePost = (newPost: PostType) => {
+    setPosts(prevPosts => [...prevPosts, newPost]);
     handleCloseModal();
   };
 
@@ -46,7 +47,7 @@ export function Feed() {
     <div>
       <Header />
 
-      <FeedContainer>
+      <ProfileContainer>
         <Sidebar onCreatePost={handleOpenModal} />
         <main>
           {posts.map(post => (
@@ -56,7 +57,7 @@ export function Feed() {
         <aside>
           <Search />
         </aside>
-      </FeedContainer>
+      </ProfileContainer>
 
       {isModalOpen && <CreatePost onClose={handleCloseModal} onCreatePost={handleCreatePost} />}
     </div>

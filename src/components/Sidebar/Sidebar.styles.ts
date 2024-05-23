@@ -22,7 +22,7 @@ export const Profile = styled.div`
   margin-top: 1rem;
 `;
 
-export const ProfileName = styled.strong`
+export const ProfileName = styled(Link)`
   margin-top: 1rem;
   color: var(--gray-100);
   line-height: 1.6;
