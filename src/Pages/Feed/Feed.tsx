@@ -16,7 +16,7 @@ export function Feed() {
     // Buscar os posts pro feed no back
     async function fetchPosts() {
       try {
-        const response = await axios.get('/api/feed-posts');
+        const response = await axios.get(`http://localhost:8080/publications/friendsPublications/${localStorage.getItem('id')}`);
         if (Array.isArray(response.data)) {
           setPosts(response.data);
         } else {
