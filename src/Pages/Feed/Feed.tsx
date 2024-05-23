@@ -9,24 +9,11 @@ import { CreatePost } from '../../components/CreatePost/CreatePost.tsx';
 
 import '../../styles/global.css';
 
-const posts: PostType[] = [ 
-{
-  id: 1,
-  author: {
-    avatarUrl: 'https://media.discordapp.net/attachments/1012049672489156669/1243018999621488670/4352375.png?ex=664ff327&is=664ea1a7&hm=c753de87db85bed5f64c6c7b9d75946dfb8eea30f8e86c08945a14994f5fcdad&=&format=webp&quality=lossless',
-    name: 'Rafael Barbosa',
-    role: '@Username'
-  },
-  content: [
-    {type: 'paragraph', content: 'Fala galeraa 👋',},
-    {type: 'paragraph', content: 'Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀',},
-    {type: 'link', content: 'jane.design/doctorcare'},
-  ],
-},
-]
+const posts: PostType[] = []
 
 export function Feed() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [posts, setPosts] = useState<PostType[]>([]);
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
@@ -34,6 +21,10 @@ export function Feed() {
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
+  };
+
+  const handleCreatePost = (newPost: PostType) => {
+    setPosts(prevPosts => [...prevPosts, newPost]);
   };
 
   return (
@@ -57,7 +48,7 @@ export function Feed() {
         </aside>
       </FeedContainer>
 
-      {isModalOpen && <CreatePost onClose={handleCloseModal} />}
+      {isModalOpen && <CreatePost onClose={handleCloseModal} onCreatePost={handleCreatePost} />}
     </div>
   );
 }

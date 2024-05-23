@@ -28,7 +28,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ onCreatePost }) => {
       </Profile>
 
       <Footer>
-        <EditProfileLink to="/profile">
+        <EditProfileLink to="/editprofile">
           <PencilLine size={20} />
           Editar seu Perfil
         </EditProfileLink>

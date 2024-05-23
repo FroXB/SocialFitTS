@@ -62,6 +62,16 @@ export const SubmitButton = styled.button`
   font-weight: bold;
 
   &:hover {
-    background: var(--orange-600);
+    background: var(--orange-500);
+  }
+
+  &:not(:disabled):hover {
+    background: var(--orange-300);
+    transition: color 0.2s, background-color 0.2s;
+  }
+
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
   }
 `;
