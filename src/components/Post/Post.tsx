@@ -15,6 +15,14 @@ interface Content {
   content: string;
 }
 
+export interface originPost {
+    id: string;
+    name: string;
+    publicationText: string;
+    userName: string;
+    likes: number;  
+}
+
 export interface PostType {
   id: number;
   author: Author;

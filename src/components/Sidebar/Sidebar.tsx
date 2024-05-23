@@ -16,6 +16,9 @@ interface SidebarProps {
   onCreatePost: () => void;
 }
 
+const profileName = localStorage.getItem('name');
+const tagUser = localStorage.getItem('user');
+
 export const Sidebar: React.FC<SidebarProps> = ({ onCreatePost }) => {
   return (
     <SidebarContainer>
@@ -23,9 +26,9 @@ export const Sidebar: React.FC<SidebarProps> = ({ onCreatePost }) => {
 
       <Profile>
         <Avatar src="https://media.discordapp.net/attachments/1012049672489156669/1243018999621488670/4352375.png?ex=664ff327&is=664ea1a7&hm=c753de87db85bed5f64c6c7b9d75946dfb8eea30f8e86c08945a14994f5fcdad&=&format=webp&quality=lossless" />
-        <ProfileName to="/profile">Rafael Barbosa</ProfileName>
-        <ProfileUsername>@Usuario</ProfileUsername>
-      </Profile>
+        <ProfileName to="/profile">{profileName}</ProfileName>
+        <ProfileUsername>@{tagUser}</ProfileUsername>
+      </Profile>
 
       <Footer>
         <EditProfileLink to="/editprofile">

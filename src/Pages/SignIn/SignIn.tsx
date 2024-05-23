@@ -30,8 +30,12 @@ export function SignIn() {
 
         if (response.ok) {
             console.log('Login bem-sucedido', data);
+            const { username, name, id } = data;
+            localStorage.setItem('user', username);
+            localStorage.setItem('name', name);
+            localStorage.setItem('id', id);
             navigate("/feed");
-        } else {
+        } else {
             console.error('Erro no login', data);
             alert('Usuário ou senha incorretos!');
         }
