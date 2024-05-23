@@ -6,8 +6,11 @@ import { Sidebar } from '../../components/Sidebar/Sidebar'
 import { Search } from '../../components/Search/Search';
 import { FeedContainer } from './Feed.styles.ts';
 import { CreatePost } from '../../components/CreatePost/CreatePost.tsx';
-
+import axios from 'axios';
 import '../../styles/global.css';
+
+console.log("eu chupo penis")
+const response = await  axios.get('http://localhost:8080/publications/friendsPublications')
 
 const posts: PostType[] = [ 
 {
@@ -20,7 +23,6 @@ const posts: PostType[] = [
   content: [
     {type: 'paragraph', content: 'Fala galeraa 👋',},
     {type: 'paragraph', content: 'Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀',},
-    {type: 'link', content: 'jane.design/doctorcare'},
   ],
 },
 ]
