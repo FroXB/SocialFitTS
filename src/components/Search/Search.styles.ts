@@ -1,4 +1,7 @@
+import React, { useState } from 'react';
+
 import styled from 'styled-components';
+
 
 export const SearchContainer = styled.input`
     background: var(--gray-800);
@@ -16,7 +19,7 @@ export const SearchContainer = styled.input`
     }
 `;
 
-export const SearchResultsOverlay = styled.div`
+export const SearchBoxOverlay = styled.div`
   position: fixed;
   top: 0;
   left: 0;
@@ -29,34 +32,10 @@ export const SearchResultsOverlay = styled.div`
   z-index: 1000;
 `;
 
-export const SearchResultsContainer = styled.div`
+export const SearchBoxContainer = styled.div`
   background: var(--gray-800);
-  padding: 2rem;
-  border-radius: 8px;
-  width: 30rem;
+  padding: 10rem;
+  border-radius: 1rem;
+  width: 25rem;
   position: relative;
-`;
-
-export const UserDetails = styled.div`
-  display: flex;
-  align-items: center;
-  margin-bottom: 1rem;
-
-  img {
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    margin-right: 1rem;
-  }
-`;
-
-export const ProfileName = styled.strong`
-  color: var(--gray-100);
-  line-height: 1.6;
-`;
-
-export const ProfileUsername = styled.span`
-  font-size: 0.875rem;
-  color: var(--gray-400);
-  line-height: 1.6;
 `;
