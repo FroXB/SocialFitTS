@@ -1,6 +1,13 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const Container = styled.div.attrs(props => ({className: props.className}))`
+    &.focus{
+        outline: transparent;
+        box-shadow: 0 0 0 2px var(--orange-500);
+        border-radius: 1rem;
+    }
+
+
     width: 100%;
     display: flex;
     align-items: center;
@@ -30,4 +37,5 @@ export const Container = styled.div`
     > svg {
             margin-left: 16px;
         }
+     
 `;

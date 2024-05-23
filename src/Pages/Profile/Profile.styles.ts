@@ -18,6 +18,7 @@ export const Container = styled.div`
             color: ${({ theme }) => theme.COLORS.GRAY_100};
             font-size: 24px;
         }
+        
 }
 `;
 
@@ -28,6 +29,7 @@ export const Form = styled.form`
     > div:nth-child(4) {
         margin-top: 24px;
     }
+    
 `;
 
 export const Avatar = styled.div`
@@ -48,5 +50,5 @@ export const Avatar = styled.div`
             height: 20px;
             color: ${({ theme }) => theme.COLORS.BACKGROUND_800};
         }
-    }
+
 `;

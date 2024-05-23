@@ -1,11 +1,11 @@
-import styles from './Header.module.css';
-
-import { Barbell } from 'phosphor-react'
+import React from 'react';
+import { Barbell } from 'phosphor-react';
+import * as Styles from './Header.styles.ts';
 
 export function Header() {
   return (
-    <header className={styles.header}>
-      <Barbell size={50} color='#FF9000' weight='light'/>
-    </header>
+    <Styles.Header>
+      <Barbell size={50} color='#FF9000' />
+    </Styles.Header>
   );
 }

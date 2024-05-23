@@ -1,12 +1,8 @@
-import { ThumbsUp } from 'phosphor-react'
-import { format, formatDistanceToNow } from 'date-fns'
-import ptBR from 'date-fns/locale/pt-BR'
-import { useState } from 'react';
+import React, { useState } from 'react';
+import { ThumbsUp } from 'phosphor-react';
 
-
-import { Avatar } from '../Avatar/Avatar'
-
-import styles from './Post.module.css'
+import { Avatar } from '../Avatar/Avatar';
+import * as Styles from './Post.styles.ts';
 
 interface Author {
   name: string;
@@ -22,7 +18,6 @@ interface Content {
 export interface PostType {
   id: number;
   author: Author;
-  publishedAt: Date;
   content: Content[];
 }
 
@@ -30,62 +25,46 @@ interface PostProps {
   post: PostType;
 }
 
-
 export function Post({ post }: PostProps) {
-  const [likeCount, setLikeCount] = useState(0)
+  const [likeCount, setLikeCount] = useState(0);
 
   function handleLike() {
-    setLikeCount((state) => {
-      return state + 1
-    })
+    setLikeCount((state) => state + 1);
   }
 
-
-  const publishedDateFormatted = format(post.publishedAt, "d 'de' LLLL 'às' HH:mm'h'", {
-    locale: ptBR,
-  })
-
-  const publishedDateRelativeToNow = formatDistanceToNow(post.publishedAt, {
-    locale: ptBR,
-    addSuffix: true,
-  })
-
   return (
-    <article className={styles.post}>
-      <header>
-        <div className={styles.author}>
+    <Styles.Post>
+      <Styles.Header>
+        <Styles.Author>
           <Avatar src={post.author.avatarUrl} />
-          <div className={styles.authorInfo}>
+          <Styles.AuthorInfo>
             <strong>{post.author.name}</strong>
             <span>{post.author.role}</span>
-          </div>
-        </div>
+          </Styles.AuthorInfo>
+        </Styles.Author>
+      </Styles.Header>
 
-        <time title={publishedDateFormatted} dateTime={post.publishedAt.toISOString()}>
-          {publishedDateRelativeToNow}
-        </time>
-      </header>
-
-      <div className={styles.content}>
-        {post.content.map(line => {
+      <Styles.Content>
+        {post.content.map((line, index) => {
           if (line.type === 'paragraph') {
-            return <p key={line.content}>{line.content}</p>
+            return <p key={index}>{line.content}</p>;
           } else if (line.type === 'link') {
-            return <p key={line.content}><a href="#">{line.content}</a></p>
+            return (
+              <p key={index}>
+                <a href="#">{line.content}</a>
+              </p>
+            );
           }
-
         })}
+      </Styles.Content>
 
-      </div>
-
-      <footer>
+      <Styles.Footer>
         <button onClick={handleLike}>
           <ThumbsUp />
           Curtir
           <span>{likeCount}</span>
         </button>
-      </footer>
-
-    </article>
-  )
+      </Styles.Footer>
+    </Styles.Post>
+  );
 }
