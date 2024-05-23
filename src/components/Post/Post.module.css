@@ -20,12 +20,12 @@
 
 .content a {
     font-weight: bold;
-    color: var(--green-500);
+    color: var(--orange-500);
     text-decoration: none;
 }
 
 .content a:hover {
-    color: var(--green-300);
+    color: var(--orange-300);
 }
 
 .post > header {
@@ -76,7 +76,7 @@ footer button {
 }
 
 footer button:hover {
-    color: var(--green-300);
+    color: var(--orange-300);
 }
 
 footer button svg {

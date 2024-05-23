@@ -1,11 +1,11 @@
 import styles from './Header.module.css';
 
-import igniteLogo from '../../assets/ignite-logo.svg';
+import { Barbell } from 'phosphor-react'
 
 export function Header() {
   return (
     <header className={styles.header}>
-      <img src={igniteLogo} alt="Logotipo do Ignite" />
+      <Barbell size={50} color='#FF9000' weight='light'/>
     </header>
   );
 }
