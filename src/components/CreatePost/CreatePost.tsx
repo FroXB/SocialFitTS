@@ -12,10 +12,12 @@ import {
 
 interface CreatePostProps {
   onClose: () => void;
-  onCreatePost: (newPost: PostType) => void;
 }
 
-export const CreatePost: React.FC<CreatePostProps> = ({ onClose, onCreatePost }) => {
+const profileName = localStorage.getItem('name');
+const tagUser = localStorage.getItem('user');
+
+export const CreatePost: React.FC<CreatePostProps> = ({ onClose }) => {
   const [postText, setPostText] = useState('');
 
   function handlePostChange(event: ChangeEvent<HTMLTextAreaElement>) {
@@ -23,24 +25,29 @@ export const CreatePost: React.FC<CreatePostProps> = ({ onClose, onCreatePost })
     setPostText(value);
   }
 
-  function handlePostSubmit() {
+  async function handlePostSubmit() {
     if (postText.trim() === '') {
       return;
     }
 
-    const newPost = {
-      id: Date.now(),
-      author: {
-        name: 'Nome do usuário', // Use o nome do usuário logado
-        role: '@Usuario', // Use o username/role do usuário logado
-        avatarUrl: 'https://media.discordapp.net/attachments/1012049672489156669/1243018999621488670/4352375.png?ex=66509be7&is=664f4a67&hm=7e2297b18f5f9c0191196b9262d700c520605e2e39410d10b1e35cc1de3ab510&=&format=webp&quality=lossless',
-      },
-      content: [{ type: 'paragraph', content: postText }],
-    };
+    try {
+      const response = await fetch(`http://localhost:8080/publications/createPost/${localStorage.getItem('id')}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ publicationText: postText })
+      });
 
-    onCreatePost(newPost);
-    setPostText('');
-    onClose();
+      if (!response.ok) {
+        throw new Error('Failed to create post');
+      }
+
+      setPostText('');
+      onClose();
+    } catch (error) {
+      console.error('Error creating post:', error);
+    }
   }
 
   return (
@@ -56,8 +63,8 @@ export const CreatePost: React.FC<CreatePostProps> = ({ onClose, onCreatePost })
           onClick={onClose}
         />
         <UserDetails>
-          <ProfileName>Rafael Barbosa</ProfileName> {/* Nome do usuário logado */}
-          <ProfileUsername>@Usuario</ProfileUsername> {/* Username do usuário logado */}
+          <ProfileName>{profileName}</ProfileName> {/* Nome do usuário logado */}
+          <ProfileUsername>@{tagUser}</ProfileUsername> {/* Username do usuário logado */}
         </UserDetails>
         <PostInput
           value={postText}
