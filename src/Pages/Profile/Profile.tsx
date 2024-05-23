@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Post, PostType } from '../../components/Post/Post';
+import { Post, PostType, originPost } from '../../components/Post/Post';
 import { Header } from '../../components/Header/Header';
 import { Sidebar }from '../../components/Sidebar/Sidebar';
 import { Search } from '../../components/Search/Search';
@@ -12,13 +12,30 @@ export function Profile() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [posts, setPosts] = useState<PostType[]>([]);
 
+  function transformarPosts(posts: originPost[]): PostType[] {
+    return posts.map((post, index) => ({
+      id: index + 1,
+      author: {
+        avatarUrl: 'https://media.discordapp.net/attachments/1012049672489156669/1243018999621488670/4352375.png?ex=664ff327&is=664ea1a7&hm=c753de87db85bed5f64c6c7b9d75946dfb8eea30f8e86c08945a14994f5fcdad&=&format=webp&quality=lossless', // Valor fixo
+        name: post.name,
+        role: `@${post.userName}`
+      },
+      content: [
+        { type: 'paragraph', content: post.publicationText } 
+      ],
+      like: post.likes
+    }));
+  }
+
   useEffect(() => {
     // Adiciona os posts do usuario no perfil dele
     async function fetchProfilePosts() {
       try {
-        const response = await axios.get('/api/profile-posts');
+        const response = await axios.get('http://localhost:8080/publications/user/df971442-c9dd-4b2c-9cd8-4db15fb98035');
+        console.log("testetetqetwqetq")
+        console.log(response)
         if (Array.isArray(response.data)) {
-          setPosts(response.data);
+          setPosts(transformarPosts(response.data));
         } else {
           console.error('A resposta da API não é um array:', response.data);
         }
