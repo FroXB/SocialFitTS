@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Post, PostType, originPost } from '../../components/Post/Post';
-import { Header } from '../../components/Header/Header';
-import { Sidebar }from '../../components/Sidebar/Sidebar';
-import { Search } from '../../components/Search/Search';
-import { ProfileContainer } from './Profile.styles.ts';
+import { Post, PostType, originPost } from '../../components/Post/Post.tsx';
+import { Header } from '../../components/Header/Header.tsx';
+import { Sidebar }from '../../components/Sidebar/Sidebar.tsx';
+import { Search } from '../../components/Search/Search.tsx';
+import { ProfileContainer, Title } from './Profile.styles.ts';
 import { CreatePost } from '../../components/CreatePost/CreatePost.tsx';
 import axios from 'axios';
 import '../../styles/global.css';
@@ -67,6 +67,7 @@ export function Profile() {
       <ProfileContainer>
         <Sidebar onCreatePost={handleOpenModal} />
         <main>
+        <Title>Profile</Title>
           {posts.map(post => (
             <Post key={post.id} post={post} />
           ))}

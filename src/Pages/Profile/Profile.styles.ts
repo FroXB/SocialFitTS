@@ -9,3 +9,13 @@ export const ProfileContainer = styled.div`
   gap: 2rem;
   align-items: flex-start;
 `;
+
+export const Title = styled.p`
+    background: var(--gray-800);
+    padding: .5rem;
+    border-radius: 1rem;
+    color: white;
+    font-weight: bold;
+    font-size: 2rem;
+    text-align: center;
+`

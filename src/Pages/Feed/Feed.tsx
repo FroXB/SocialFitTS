@@ -3,7 +3,7 @@ import { Post, PostType, originPost  } from '../../components/Post/Post';
 import { Header } from '../../components/Header/Header';
 import { Sidebar }from '../../components/Sidebar/Sidebar';
 import { Search } from '../../components/Search/Search';
-import { FeedContainer } from './Feed.styles.ts';
+import { FeedContainer, Title } from './Feed.styles.ts';
 import { CreatePost } from '../../components/CreatePost/CreatePost.tsx';
 import axios from 'axios';
 import '../../styles/global.css';
@@ -67,6 +67,7 @@ export function Feed() {
       <FeedContainer>
         <Sidebar onCreatePost={handleOpenModal} />
         <main>
+        <Title>Feed</Title>
           {posts.map(post => (
             <Post key={post.id} post={post} />
           ))}
