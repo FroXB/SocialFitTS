@@ -31,7 +31,7 @@ export function Profile() {
     // Adiciona os posts do usuario no perfil dele
     async function fetchProfilePosts() {
       try {
-        const response = await axios.get('http://localhost:8080/publications/user/df971442-c9dd-4b2c-9cd8-4db15fb98035');
+        const response = await axios.get(`http://localhost:8080/publications/user/${localStorage.getItem('id')}`);
         console.log("testetetqetwqetq")
         console.log(response)
         if (Array.isArray(response.data)) {
