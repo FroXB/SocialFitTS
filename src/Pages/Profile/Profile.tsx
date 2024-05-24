@@ -67,7 +67,7 @@ export function Profile() {
       <ProfileContainer>
         <Sidebar onCreatePost={handleOpenModal} />
         <main>
-        <Title>Profile</Title>
+        <Title>Perfil</Title>
           {posts.map(post => (
             <Post key={post.id} post={post} />
           ))}
