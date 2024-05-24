@@ -1,11 +1,20 @@
 import React, { useState } from 'react';
-import { X } from 'phosphor-react';
+import { Plus } from 'phosphor-react';
+import { Avatar } from '../Avatar/Avatar'
 
-import { SearchContainer, SearchBoxOverlay, SearchBoxContainer } from './Search.styles';
+import { SearchContainer, SearchBoxOverlay, UserList, UserItem, UserInfo, UserName, UserRole, Line } from './Search.styles';
 
 export function Search() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchText, setSearchText] = useState('');
+
+  const users = [
+    {
+      name: 'Nome',
+      role: '@Usuario',
+      avatarUrl: 'https://media.discordapp.net/attachments/1012049672489156669/1243018999621488670/4352375.png?ex=66509be7&is=664f4a67&hm=7e2297b18f5f9c0191196b9262d700c520605e2e39410d10b1e35cc1de3ab510&=&format=webp&quality=lossless',
+    },
+  ];
 
   const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter') {
@@ -16,6 +25,10 @@ export function Search() {
 
   const handleClose = () => {
     setIsSearchOpen(false);
+  };
+
+  const handleBoxClick = (event: React.MouseEvent<HTMLDivElement>) => {
+    event.stopPropagation();
   };
 
   return (
@@ -30,19 +43,21 @@ export function Search() {
       />
       {isSearchOpen && (
         <SearchBoxOverlay onClick={handleClose}>
-          <SearchBoxContainer>
-            <X
-              style={{
-                position: 'absolute',
-                top: '1rem',
-                right: '1rem',
-                cursor: 'pointer',
-              }}
-              size={32}
-              onClick={handleClose}
-            />
-            {/* Conteúdo da caixa de pesquisa */}
-          </SearchBoxContainer>
+          <UserList onClick={handleBoxClick}>
+            {users.map((user, index) => (
+              <>
+                <UserItem key={index} >
+                  <Avatar src={user.avatarUrl} alt={`${user.name}'s avatar`} />
+                  <UserInfo>
+                    <UserName>{user.name}</UserName>
+                    <UserRole>{user.role}</UserRole>
+                  </UserInfo>
+                  <Plus size={24} style={{ cursor: 'pointer' }} onClick={() => console.log('Add user')} />
+                </UserItem>
+                {index !== users.length -1 && <Line />}
+              </>
+            ))}
+          </UserList>
         </SearchBoxOverlay>
       )}
     </>
