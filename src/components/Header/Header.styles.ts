@@ -11,6 +11,10 @@ export const LeftIcon = styled.div`
   margin-left: 2rem;
 `;
 
+export const RightIcon = styled.div`
+  margin-right: 2rem; 
+`;
+
 export const CenterIcons = styled.div`
   display: flex;
   justify-content: center;

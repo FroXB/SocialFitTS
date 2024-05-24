@@ -1,5 +1,5 @@
 import React from 'react';
-import { Barbell, House, User } from 'phosphor-react';
+import { Barbell, House, User, Power } from 'phosphor-react';
 import * as Styles from './Header.styles.ts';
 import { Link, useLocation } from 'react-router-dom';
 
@@ -20,6 +20,11 @@ export function Header() {
           <User size={35} color={location.pathname !== '/profile' ? '#8d8d99' : '#FF9000'} />
         </Link>
       </Styles.CenterIcons>
+      <Styles.RightIcon>
+        <Link to="/">
+          <Power size={35} color="#8d8d99" />
+        </Link>
+      </Styles.RightIcon>
     </Styles.Header>
   );
 }
