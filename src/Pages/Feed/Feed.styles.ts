@@ -12,10 +12,11 @@ export const FeedContainer = styled.div`
 
 export const Title = styled.p`
     background: var(--gray-800);
-    padding: .5rem;
+    margin-bottom: 2rem;
     border-radius: 1rem;
     color: white;
     font-weight: bold;
     font-size: 2rem;
     text-align: center;
+
 `

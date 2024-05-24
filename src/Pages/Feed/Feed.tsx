@@ -67,7 +67,7 @@ export function Feed() {
       <FeedContainer>
         <Sidebar onCreatePost={handleOpenModal} />
         <main>
-        <Title>Feed</Title>
+        <Title>Tela inicial</Title>
           {posts.map(post => (
             <Post key={post.id} post={post} />
           ))}

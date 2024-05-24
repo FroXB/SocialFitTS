@@ -12,7 +12,7 @@ export const ProfileContainer = styled.div`
 
 export const Title = styled.p`
     background: var(--gray-800);
-    padding: .5rem;
+    margin-bottom: 2rem;
     border-radius: 1rem;
     color: white;
     font-weight: bold;
