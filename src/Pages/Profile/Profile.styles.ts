@@ -11,6 +11,7 @@ export const ProfileContainer = styled.div`
 `;
 
 export const Title = styled.p`
+    padding: 1rem 0 1rem 0;
     background: var(--gray-800);
     margin-bottom: 2rem;
     border-radius: 1rem;

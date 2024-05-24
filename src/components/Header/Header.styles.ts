@@ -4,7 +4,7 @@ export const Header = styled.header`
   background: var(--gray-800);
   display: flex;
   padding: 1.25rem 0;
-  align-items: center; /* Para centralizar verticalmente os ícones */
+  align-items: center; 
 `;
 
 export const LeftIcon = styled.div`
@@ -23,7 +23,7 @@ export const CenterIcons = styled.div`
 
 export const VerticalLine = styled.div`
   width: .2rem;
-  height: 3rem; 
+  height: 2rem; 
   background-color: #FF9000; 
 
 `;

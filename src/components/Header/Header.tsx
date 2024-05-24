@@ -13,11 +13,11 @@ export function Header() {
       </Styles.LeftIcon>
       <Styles.CenterIcons>
         <Link to="/feed">
-          <House size={50} color={location.pathname === '/feed' ? '#121214' : '#FF9000'} />
+          <House size={35} color={location.pathname !== '/feed' ? '#8d8d99' : '#FF9000'} />
         </Link>
         <Styles.VerticalLine />
         <Link to="/profile">
-          <User size={50} color={location.pathname === '/profile' ? '#121214' : '#FF9000'} />
+          <User size={35} color={location.pathname !== '/profile' ? '#8d8d99' : '#FF9000'} />
         </Link>
       </Styles.CenterIcons>
     </Styles.Header>
