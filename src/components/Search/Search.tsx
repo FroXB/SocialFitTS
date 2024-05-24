@@ -10,8 +10,8 @@ export function Search() {
 
   const users = [
     {
-      name: 'Nome',
-      role: '@Usuario',
+      name: 'Fernando Henrique',
+      role: '@FernandoH',
       avatarUrl: 'https://media.discordapp.net/attachments/1012049672489156669/1243018999621488670/4352375.png?ex=66509be7&is=664f4a67&hm=7e2297b18f5f9c0191196b9262d700c520605e2e39410d10b1e35cc1de3ab510&=&format=webp&quality=lossless',
     },
   ];
